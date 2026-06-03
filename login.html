@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - StudyMeter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Welcome Back 👋</h2>
+
+  <input id="loginUser" type="text" placeholder="Username">
+  <input id="loginPass" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p>Don't have an account? <a href="signup.html">Signup</a></p>
+</div>
+
+<script>
+function login() {
+  let user = document.getElementById("loginUser").value.trim();
+  let pass = document.getElementById("loginPass").value.trim();
+
+  if (!user || !pass) {
+    alert("Fill all fields");
+    return;
+  }
+
+  let savedPass = localStorage.getItem(user);
+
+  if (savedPass === pass) {
+    localStorage.setItem("currentUser", user);
+    alert("Login Successful ✅");
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Invalid Username or Password ❌");
+  }
+}
+</script>
+
+</body>
+</html>
